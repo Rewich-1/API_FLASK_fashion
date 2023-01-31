@@ -3,19 +3,23 @@ import numpy as np
 from tensorflow import keras
 
 app = Flask(__name__)
-id2class = {0: "T-shirt/top",
-            1: "Trouser",
-            2: "Pullover",
-            3: "Dress",
-            4: "Coat",
-            5: "Sandal",
-            6: "Shirt",
-            7: "Sneaker",
-            8: "Bag",
-            9: "Ankle boot",}
-model = keras.models.load_model("fashion_mnist")
+
 @app.route('/predict', methods=['POST'])
 def predict():
+
+    model = keras.models.load_model("fashion_mnist")
+    id2class = {0: "T-shirt/top",
+                1: "Trouser",
+                2: "Pullover",
+                3: "Dress",
+                4: "Coat",
+                5: "Sandal",
+                6: "Shirt",
+                7: "Sneaker",
+                8: "Bag",
+                9: "Ankle boot", }
+
+
     parameters = request.get_json(force=True)
     print("1")
     im = np.array(parameters['image'])
