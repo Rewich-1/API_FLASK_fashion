@@ -17,14 +17,15 @@ model = keras.models.load_model("fashion_mnist")
 @app.route('/predict', methods=['POST'])
 def predict():
     parameters = request.get_json(force=True)
-    print(parameters)
+    print("1")
     im = np.array(parameters['image'])
-    print(im)
+    print("2")
     im = im.astype("float32") / 255
-    print(im)
+    print("3")
     im = np.expand_dims(im, -1)[None]
-    print(im)
+    print("4")
     out = id2class[np.argmax(model.predict(im))]
+    print("5")
     return out
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
