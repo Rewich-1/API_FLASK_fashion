@@ -13,7 +13,7 @@ pipeline {
 
 	stage('Run') {
             steps {
-                bat 'docker run -p 5000:5000 --name=fmn fashion_mnist'
+                bat 'docker run -d -p 5000:5000 --name=fmn fashion_mnist'
             }
         }
 
