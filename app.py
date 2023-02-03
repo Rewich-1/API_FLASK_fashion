@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route('/predict', methods=['POST'])
 def predict():
 
-    model = keras.models.load_model("fashion_mnist")
+    model = keras.models.load_model("fashion_mnist.h5")
     id2class = {0: "T-shirt/top",
                 1: "Trouser",
                 2: "Pullover",
