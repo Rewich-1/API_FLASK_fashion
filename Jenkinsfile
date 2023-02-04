@@ -6,7 +6,7 @@ pipeline {
 	stage("Testing the model"){
       		steps{
        		echo 'testing'
-        	bat' python -m test_main'
+        	bat' py -m test_main'
       		}
     	}
 
@@ -26,7 +26,7 @@ pipeline {
 	stage("Testing the RESTAPI"){
       		steps{
         	echo 'testing the RESTAPI'
-        	bat' python -m test_api'
+        	bat' py -m test_api'
       		}
 	}
 
