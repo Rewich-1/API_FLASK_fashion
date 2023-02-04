@@ -4,7 +4,7 @@ from tensorflow import keras
 
 app = Flask(__name__)
 
-@app.route('/predict', methods=['POST'])
+@app.route('/classify', methods=['POST'])
 def predict():
 
     model = keras.models.load_model("fashion_mnist.h5")
@@ -21,15 +21,10 @@ def predict():
 
 
     parameters = request.get_json(force=True)
-    print("1")
     im = np.array(parameters['image'])
-    print("2")
     im = im.astype("float32") / 255
-    print("3")
     im = np.expand_dims(im, -1)[None]
-    print("4")
     out = id2class[np.argmax(model.predict(im))]
-    print("5")
     return out
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
